@@ -207,11 +207,35 @@ const artists = [
 
 (1) Name of the first artist in the array
 (2) Bio of the third artist in the array */
+function firstArtist(artList) {
+  return "The name of the first artist on this list is " + artList[0].name;
+}
+console.log("Task 1.1 'first artist' below");
+console.log(firstArtist(artists));
 
+function thirdBio(artList) {
+  return "The bio of the 3rd artist is " + artList[2].bio;
+}
+console.log("Task 1.2 'bio of 3rd artist' below");
+console.log(thirdBio(artists));
 
 
 /* Task 2: There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
+function correctSpelling(artList) {
+  const artistNames = [];
 
+  for(let i = 0; i < artList.length; i++) {
+    if(artList[i].name === "Vincent van Dough") {
+      artistNames.push("Vincent van Gogh")
+    } else {
+      artistNames.push(artList[i].name)
+    }
+  }
+
+  return artistNames;
+}
+console.log("Task 2 results below");
+console.log(correctSpelling(artists));
 
 
 /* Task 3: Create a function called `getArtistByIndex` that takes two arguments:
@@ -223,8 +247,10 @@ const artists = [
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
 function getArtistByIndex(id, name) {
-    /* code here */
-  }
+  return `The artist at index ${name[id].id} is ${name[id].name}`;
+}
+console.log("Task 3 'Artist by Index' results below");
+console.log(getArtistByIndex(15, artists));
   
   /**
 
@@ -237,23 +263,42 @@ function getArtistByIndex(id, name) {
  * For example, if removeArtist is invoked with the data and the number 0,
  * it will remove Amedeo Modigliani from our dataset.
 */
-function removeArtist(/*code here*/) {
-    /* code here */
-  }
-  
+function removeArtist(artList, idNum) {
+    const augmentedArtists = [];
+
+    for(i = 0; i < artList.length; i++) {
+      if(artList[i].id != idNum) {
+        augmentedArtists.push(artList[i]);
+      }
+    }
+
+    return augmentedArtists;
+}
+console.log("Task 4 'Remove Artist' for id #13 results below");
+console.log(removeArtist(artists, 13));
+
   /**
 
 
 /* Task 5: Create a function called lotsOfArt() that takes artists as an argument and returns an array with names of artists who painted more than 100 paintings */
 
-function lotsOfArt(/* Code here */){
+function lotsOfArt(artList){
+  const productiveArtists = [];
 
-    /* Code here */
-
+  for(i = 0; i < artList.length; i++) {
+    if(artList[i].paintings > 100) {
+      productiveArtists.push(artList[i].name);
+    }
   }
 
+  return productiveArtists;
+}
+console.log("Task 5 'Names of artists with more than 100 paintings' results below");
+console.log(lotsOfArt(artists));
 
-/* Task 6: Create a function called `addArtist` that can accept an array of information and add it to the artists array. Then, Add a 21st artist to the array (you) with custom information! 👩‍🎨👨‍🎨
+
+/* Task 6: Create a function called `addArtist` that can accept an array of information and add it to the artists array.
+Then, Add a 21st artist to the array (you) with custom information! 👩‍🎨👨‍🎨
 
 id: 21
 name: Your Name Here, 
@@ -262,12 +307,23 @@ genre: Web Design,
 nationality: Your Nationality Here
 bio: Add 1-2 sentences (or use lorem ipsum) "*/
 
-function addArtist(/* Code here */){
+function addArtist(artList, newID, newName, newYears, newGenre, newNation, newBio){
+  const newArtist = {
+    "id": newID,
+    "name": newName,
+    "years": newYears,
+    "genre": newGenre,
+    "nationality": newNation,
+    "bio": newBio
+  };
 
-    /* Code here */
+  artList.push(newArtist);
 
-  }
-
+  return artList;
+}
+const myBio = 'Peter Wood was born on May 17, 1980 and -- by all accounts -- fell in love with Mathematics before he could even walk. Today, he applies that strong mathematical foundation to solving complex logic problems in programming software for numerous platforms.';
+console.log("Task 6 'Adding Peter Wood to artists list' results below");
+console.log(addArtist(artists, 21, 'Peter Wood', '1980 - 2020', 'Web Design', 'American', myBio));
 
 
 
