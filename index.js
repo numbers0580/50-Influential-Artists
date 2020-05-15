@@ -266,7 +266,7 @@ console.log(getArtistByIndex(15, artists));
 function removeArtist(artList, idNum) {
     const augmentedArtists = [];
 
-    for(i = 0; i < artList.length; i++) {
+    for(let i = 0; i < artList.length; i++) {
       if(artList[i].id != idNum) {
         augmentedArtists.push(artList[i]);
       }
@@ -285,7 +285,7 @@ console.log(removeArtist(artists, 13));
 function lotsOfArt(artList){
   const productiveArtists = [];
 
-  for(i = 0; i < artList.length; i++) {
+  for(let i = 0; i < artList.length; i++) {
     if(artList[i].paintings > 100) {
       productiveArtists.push(artList[i].name);
     }
@@ -332,11 +332,35 @@ console.log(addArtist(artists, 21, 'Peter Wood', '1980 - 2020', 'Web Design', 'A
 
 /* STRETCH 1: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born the 20th century (1800-1900) */
 
-function get20s(/* Code here */){
+function get20s(artList){
+  const artList20s = [];
 
-    /* Code here */
-
+  for(let i = 0; i < artList.length; i++) {
+    let tempString = artList[i].years;
+    if(tempString.charAt(1) === '9') {
+      artList20s.push(artList[i].name);
+    }
   }
+
+  return artList20s;
+}
+
+function get20sA(artList){
+  const artList1800s = [];
+
+  for(let i = 0; i < artList.length; i++) {
+    let tempString = artList[i].years;
+    if(tempString.charAt(1) === '8') {
+      artList1800s.push(artList[i].name);
+    }
+  }
+
+  return artList1800s;
+}
+console.log("Stretch Task 1 'DOB in 20th century' results below");
+console.log(get20s(artists));
+console.log("Stretch Task 1 'DOB in 1800 - 1900' results below");
+console.log(get20sA(artists));
 
 /* STRETCH 2: Programtically console.log HTML element structure 
 
